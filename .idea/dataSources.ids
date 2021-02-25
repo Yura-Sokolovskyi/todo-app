@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - todo_app@localhost" uuid="f04cbf74-9fd2-4371-a917-59bede816694">
+    <database-info product="MySQL" version="5.5.5-10.4.17-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="todo_app"/>
+      <table id="2" parent="1" name="failed_jobs"/>
+      <table id="3" parent="1" name="migrations"/>
+      <table id="4" parent="1" name="password_resets"/>
+      <table id="5" parent="1" name="todos"/>
+      <table id="6" parent="1" name="todo_lists"/>
+      <table id="7" parent="1" name="users"/>
+      <column id="8" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="9" parent="2" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="10" parent="2" name="connection">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="11" parent="2" name="queue">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="12" parent="2" name="payload">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="13" parent="2" name="exception">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="14" parent="2" name="failed_at">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;current_timestamp()&apos;</default-expression>
+      </column>
+      <index id="15" parent="2" name="failed_jobs_uuid_unique">
+        <columns>uuid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="16" parent="2" name="failed_jobs_uuid_unique">
+        <columns>uuid</columns>
+        <underlying-index>failed_jobs_uuid_unique</underlying-index>
+      </key>
+      <key id="17" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="18" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="19" parent="3" name="migration">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="20" parent="3" name="batch">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="21" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="22" parent="4" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="23" parent="4" name="token">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="24" parent="4" name="created_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <index id="25" parent="4" name="password_resets_email_index">
+        <columns>email</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <column id="26" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="27" parent="5" name="todo_list_id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="28" parent="5" name="position">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="29" parent="5" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="30" parent="5" name="is_do">
+        <mandatory>1</mandatory>
+        <data-type>double(8,2)</data-type>
+      </column>
+      <column id="31" parent="5" name="created_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <column id="32" parent="5" name="updated_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <index id="33" parent="5" name="todos_todo_list_id_foreign">
+        <columns>todo_list_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="34" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="35" parent="5" name="todos_todo_list_id_foreign">
+        <columns>todo_list_id</columns>
+        <ref-key>~.todo_lists.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="36" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="37" parent="6" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="38" parent="6" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="39" parent="6" name="created_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <column id="40" parent="6" name="updated_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <index id="41" parent="6" name="todo_lists_user_id_foreign">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="42" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="43" parent="6" name="todo_lists_user_id_foreign">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="44" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="45" parent="7" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="46" parent="7" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="47" parent="7" name="email_verified_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <column id="48" parent="7" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="49" parent="7" name="remember_token">
+        <data-type>varchar(100)</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <column id="50" parent="7" name="created_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <column id="51" parent="7" name="updated_at">
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;NULL&apos;</default-expression>
+      </column>
+      <index id="52" parent="7" name="users_email_unique">
+        <columns>email</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="53" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="54" parent="7" name="users_email_unique">
+        <columns>email</columns>
+        <underlying-index>users_email_unique</underlying-index>
+      </key>
+    </database-model>
+  </data-source>
+</component>
