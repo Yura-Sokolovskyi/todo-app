@@ -15,17 +15,16 @@
 
 3. Open terminal and go to the cloned repository local directory.
 
-4. In the file ".env" change setting for database connection.
+4. Rename file ".env.example" to ".env" and change setting for database connection.
 
 5. Install composer
 
 ```bash
 composer install
 ```
-
-6. Install Node.js
+6. Generate application key 
 ```bash
-npm install
+php artisan key:generate
 ```
 7. Run DB migrations (add "--ceed" to migrate with seeding)
 ```bash
